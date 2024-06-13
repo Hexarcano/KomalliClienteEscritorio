@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\mahma\source\repos\KomalliClienteEscritorio\App.xaml
-101255107104
+111852854374
 
-29-1050846511
+341432319684
 2001910120832
-AdminHome\View\AdminHome.xaml;Categorias\View\EditarCategoria.xaml;Categorias\View\MainCategorias.xaml;Login\View\LoginPage.xaml;MainWindow.xaml;Ordenes\View\AgregarProducto.xaml;Ordenes\View\EditarOrdenes.xaml;Ordenes\View\MainOrdenes.xaml;Productos\View\EditarProducto.xaml;Productos\View\MainProductos.xaml;
+AdminHome\View\AdminHome.xaml;Categorias\View\EditarCategoria.xaml;Categorias\View\MainCategorias.xaml;Login\View\LoginPage.xaml;Login\View\RegistroPage.xaml;MainWindow.xaml;Ordenes\View\AgregarProducto.xaml;Ordenes\View\EditarOrdenes.xaml;Ordenes\View\MainOrdenes.xaml;Productos\View\EditarProducto.xaml;Productos\View\MainProductos.xaml;
 
 True
 

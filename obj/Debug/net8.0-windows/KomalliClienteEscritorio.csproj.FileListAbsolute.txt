@@ -39,3 +39,6 @@ C:\Users\mahma\source\repos\KomalliClienteEscritorio\obj\Debug\net8.0-windows\Or
 C:\Users\mahma\source\repos\KomalliClienteEscritorio\obj\Debug\net8.0-windows\Ordenes\View\EditarOrdenes.baml
 C:\Users\mahma\source\repos\KomalliClienteEscritorio\obj\Debug\net8.0-windows\Ordenes\View\AgregarProducto.g.cs
 C:\Users\mahma\source\repos\KomalliClienteEscritorio\obj\Debug\net8.0-windows\Ordenes\View\AgregarProducto.baml
+C:\Users\mahma\source\repos\KomalliClienteEscritorio\obj\Debug\net8.0-windows\KomalliClienteEscritorio.sourcelink.json
+C:\Users\mahma\source\repos\KomalliClienteEscritorio\obj\Debug\net8.0-windows\Login\View\RegistroPage.g.cs
+C:\Users\mahma\source\repos\KomalliClienteEscritorio\obj\Debug\net8.0-windows\Login\View\RegistroPage.baml

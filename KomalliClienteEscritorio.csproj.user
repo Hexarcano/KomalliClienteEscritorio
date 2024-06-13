@@ -19,6 +19,9 @@
     <Compile Update="Login\View\LoginPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Login\View\RegistroPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Ordenes\View\AgregarProducto.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -46,6 +49,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Login\View\LoginPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Login\View\RegistroPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

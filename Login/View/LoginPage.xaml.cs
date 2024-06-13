@@ -26,6 +26,8 @@ namespace KomalliClienteEscritorio.Login.View
 
         public LoginPage()
         {
+            window = Application.Current.MainWindow as MainWindow;
+
             InitializeComponent();
         }
 
@@ -54,8 +56,6 @@ namespace KomalliClienteEscritorio.Login.View
 
                 if (respuesta.AccessToken != null)
                 {
-                    window = Application.Current.MainWindow as MainWindow;
-
                     AdminHome.View.AdminHome nuevaPagina = new AdminHome.View.AdminHome();
                     nuevaPagina.SetSesion(sesion);
 
@@ -72,7 +72,13 @@ namespace KomalliClienteEscritorio.Login.View
                 lbError.Content = "No fue posible conectar con el servidor";
                 lbError.Visibility = Visibility.Visible;
             }
+        }
 
+        private void Registrar(object sender, RoutedEventArgs e)
+        {
+            RegistroPage nuevaPage = new RegistroPage();
+
+            window.CambiarAPage(nuevaPage);
         }
     }
 }

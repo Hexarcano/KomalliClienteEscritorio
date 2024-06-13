@@ -5,6 +5,7 @@ using KomalliClienteEscritorio.Productos.Model;
 using KomalliClienteEscritorio.Request;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,14 +28,17 @@ namespace KomalliClienteEscritorio.Ordenes.View
     {
         private MainWindow window;
         private Sesion sesion;
-        private OrdenResponse respuesta;
+        private OrdenResponse respuestaOrden;
+        private ProductoResponse respuestaProducto;
         private bool isActualizar = false;
         private List<Producto> productos;
+        private ObservableCollection<ProductoOrdenListview> listview;
         private Guid ordenId = Guid.Empty;
 
         public EditarOrdenes()
         {
             window = Application.Current.MainWindow as MainWindow;
+            listview = new ObservableCollection<ProductoOrdenListview>();
             productos = new List<Producto>();
 
             List<bool> bools = new List<bool>()
@@ -61,7 +65,7 @@ namespace KomalliClienteEscritorio.Ordenes.View
 
         private void Atras(object sender, RoutedEventArgs e)
         {
-            MainProductos nuevaPage = new MainProductos();
+            MainOrdenes nuevaPage = new MainOrdenes();
             nuevaPage.SetSesion(GetSesion());
             nuevaPage.CargarDatos();
 
@@ -79,18 +83,18 @@ namespace KomalliClienteEscritorio.Ordenes.View
 
         private async void Eliminar(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && button.Tag is Orden orden)
+            if (sender is Button button && button.Tag is ProductoOrdenListview productoOrden)
             {
-                //MessageBoxResult result = MessageBox.Show($"¿Está seguro que desea eliminar la orden: {orden.Id}?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show($"¿Está seguro que desea eliminar el producto: {productoOrden.ProductoId} de la orden?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-                //if (result == MessageBoxResult.Yes)
-                //{
-                //    // Lógica para eliminar la categoría
-                //    ordenes.Remove(orden);
-                //    // Aquí podrías llamar a un método para eliminar la categoría en la base de datos, por ejemplo:
-                //    await Peticion.PeticionDELETE($"api/Producto/{orden.Id}", "", GetSesion());
-                //    MessageBox.Show($"Orden {orden.Id} eliminada.");
-                //}
+                if (result == MessageBoxResult.Yes)
+                {
+                    var producto = productos.Find(p => p.Id == productoOrden.ProductoId);
+                    productos.Remove(producto);
+                    LlenarListView();
+
+                    MessageBox.Show($"Orden {producto.Id} eliminada.");
+                }
             }
         }
 
@@ -100,34 +104,63 @@ namespace KomalliClienteEscritorio.Ordenes.View
             {
                 string nombreCliente = tbNombreCliente.Text;
                 double precioTotal = double.Parse(tbPrecioTotal.Text);
-                bool categoria = (bool)cbPagado.SelectedValue;
+                bool pagado = (bool)cbPagado.SelectedValue;
                 string comentario = tvComentario.Text;
 
-                //if (isActualizar)
-                //{
-                //    Producto producto = new Producto()
-                //    {
-                //        Id = id,
-                //        Nombre = nombre,
-                //        Precio = precio,
-                //        PorcentajeDescuento = descuento,
-                //        CategoriaProductoId = categoria
-                //    };
+                if (isActualizar)
+                {
+                    List<ProductoOrdenRegistro> productosRegistro = new List<ProductoOrdenRegistro>();
 
-                //    respuestaProducto = await Peticion.PeticionPUT<ProductoResponse>("api/Producto", productoId.ToString(), producto, GetSesion());
-                //}
-                //else
-                //{
-                //    Producto producto = new Producto()
-                //    {
-                //        Nombre = nombre,
-                //        Precio = precio,
-                //        PorcentajeDescuento = descuento,
-                //        CategoriaProductoId = categoria
-                //    };
+                    foreach (var item in productos)
+                    {
+                        productosRegistro.Add(new ProductoOrdenRegistro()
+                        {
+                            ProductoId = item.Id,
+                            Cantidad = 1,
+                            PrecioUnitario = item.Precio,
+                            SubtotalProductos = precioTotal
+                        });
+                    }
 
-                //    respuestaProducto = await Peticion.PeticionPOST<ProductoResponse>("api/Producto", producto, GetSesion());
-                //}
+                    OrdenRegistro orden = new OrdenRegistro()
+                    {
+                        Id = respuestaOrden.Ordenes.First().Id,
+                        NombreCliente = nombreCliente,
+                        PrecioTotal = precioTotal,
+                        Comentario = comentario,
+                        Pagado = pagado,
+                        Productos = productosRegistro
+                    };
+
+                    
+                    respuestaOrden = await Peticion.PeticionPUT<OrdenResponse>("api/Orden", respuestaOrden.Ordenes.First().Id.ToString(), orden, GetSesion());
+                }
+                else
+                {
+                    List<ProductoOrdenRegistro> productosRegistro = new List<ProductoOrdenRegistro>();
+
+                    foreach (var item in productos)
+                    {
+                        productosRegistro.Add(new ProductoOrdenRegistro()
+                        {
+                            ProductoId = item.Id,
+                            Cantidad = 1,
+                            PrecioUnitario = item.Precio,
+                            SubtotalProductos = precioTotal
+                        });
+                    }
+
+                    OrdenRegistro orden = new OrdenRegistro()
+                    {
+                        NombreCliente = nombreCliente,
+                        PrecioTotal = precioTotal,
+                        Comentario = comentario,
+                        Pagado = pagado,
+                        Productos = productosRegistro
+                    };
+
+                    respuestaOrden = await Peticion.PeticionPOST<OrdenResponse>("api/Orden", orden, GetSesion());
+                }
             }
             catch (Exception ex)
             {
@@ -137,14 +170,33 @@ namespace KomalliClienteEscritorio.Ordenes.View
 
         public async void CargarDatos(Guid ordenId)
         {
-            respuesta = await Peticion.PeticionGET<OrdenResponse>("api/Orden", ordenId.ToString(), GetSesion());
+            respuestaOrden = await Peticion.PeticionGET<OrdenResponse>("api/Orden", ordenId.ToString(), GetSesion());
+
+            if (respuestaOrden.Productos.Count > 0)
+            {
+                foreach (var item in respuestaOrden.Productos)
+                {
+                    respuestaProducto = await Peticion.PeticionGET<ProductoResponse>("api/Producto", item.ProductoId.ToString(), GetSesion());
+                    productos.Add(respuestaProducto.Productos.First());
+                }
+            }
+
+            LlenarDatos();
+            tbNombreCliente.IsEnabled = false;
+            isActualizar = true;
+            btnAgregar.Visibility = Visibility.Hidden;
         }
 
         private void LlenarDatos()
         {
-            if (respuesta.Ordenes != null)
+            tbNombreCliente.Text = respuestaOrden.Ordenes[0].NombreCliente;
+            tbPrecioTotal.Text = respuestaOrden.Ordenes[0].PrecioTotal.ToString();
+            cbPagado.SelectedValue = respuestaOrden.Ordenes[0].Pagado;
+            tvComentario.Text = respuestaOrden.Ordenes[0].Comentario;
+
+            if (respuestaOrden.Ordenes != null)
             {
-                // TODO
+                LlenarListView();
             }
         }
 
@@ -162,34 +214,26 @@ namespace KomalliClienteEscritorio.Ordenes.View
 
         private void LlenarListView()
         {
+            listview.Clear();
 
-            //foreach (var item in respuesta.Productos)
-            //{
-            //    var producto = new ProductoOrden()
-            //    {
-
-            //    };
-
-            //    productos.Add(producto);
-            //}
-
-            if(productos.Count > 0)
+            if (productos.Count > 0)
             {
                 foreach (var item in productos)
                 {
-                    var producto = new ProductoOrden()
+                    var producto = new ProductoOrdenListview()
                     {
                         ProductoId = item.Id,
                         Cantidad = 1,
                         PrecioUnitario = item.Precio,
-                        
+                        NombreProducto = item.Nombre,
+                        SubtotalProductos = 0
                     };
 
-                    //productos.Add(producto);
+                    listview.Add(producto);
                 }
             }
 
-            lvProductos.ItemsSource = productos;
+            lvProductos.ItemsSource = listview;
         }
     }
 }

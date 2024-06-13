@@ -90,12 +90,6 @@
                 Style="{StaticResource AnimatedButtonStyle}" Margin="190,0,0,130"
                 Click="AdministrarOrdenes"/>
 
-
-        <Button Content="Clientes" Grid.Row="1" Grid.Column="1"
-            HorizontalAlignment="Center" VerticalAlignment="Center" 
-            Style="{StaticResource AnimatedButtonStyle}" Margin="-190,0,0,128"
-            Click="AdministrarClientes"/>
-
         <Image x:Name="LogoUV" Grid.Column="2" Height="200" Width="200" Grid.Row="0" />
         <Button Grid.Column="2" Content="Cerrar sesión" Grid.Row="1" 
                 Style="{StaticResource AnimatedButtonStyleSmall}" HorizontalAlignment="Right" Margin="0,300,30,0" VerticalAlignment="Top"

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KomalliClienteEscritorio")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71b6d583bb1cb284b27df68d7714e32809930537")]
 [assembly: System.Reflection.AssemblyProductAttribute("KomalliClienteEscritorio")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KomalliClienteEscritorio")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

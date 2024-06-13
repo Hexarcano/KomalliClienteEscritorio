@@ -74,16 +74,16 @@ namespace KomalliClienteEscritorio.Ordenes.View
         {
             if (sender is Button button && button.Tag is Orden orden)
             {
-                //MessageBoxResult result = MessageBox.Show($"¿Está seguro que desea eliminar la orden: {orden.Id}?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show($"¿Está seguro que desea eliminar la orden: {orden.Id}?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-                //if (result == MessageBoxResult.Yes)
-                //{
-                //    // Lógica para eliminar la categoría
-                //    ordenes.Remove(orden);
-                //    // Aquí podrías llamar a un método para eliminar la categoría en la base de datos, por ejemplo:
-                //    await Peticion.PeticionDELETE($"api/Producto/{orden.Id}", "", GetSesion());
-                //    MessageBox.Show($"Orden {orden.Id} eliminada.");
-                //}
+                if (result == MessageBoxResult.Yes)
+                {
+                    // lógica para eliminar la categoría
+                    ordenes.Remove(orden);
+                    // aquí podrías llamar a un método para eliminar la categoría en la base de datos, por ejemplo:
+                    await Peticion.PeticionDELETE($"api/Orden/{orden.Id}", "", GetSesion());
+                    MessageBox.Show($"Orden {orden.Id} eliminada.");
+                }
             }
         }
 

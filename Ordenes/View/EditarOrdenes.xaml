@@ -23,10 +23,10 @@
         <ListView x:Name="lvProductos" Margin="178,310,178,134">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
-                    <GridViewColumn Header="Producto" DisplayMemberBinding="{Binding Nombre}" Width="200"/>
-                    <GridViewColumn Header="Precio Unitario" DisplayMemberBinding="{Binding PrecioTotal}" Width="100"/>
-                    <GridViewColumn Header="Cantidad" DisplayMemberBinding="{Binding Pagado}" Width="100"/>
-                    <GridViewColumn Header="Subtotal" DisplayMemberBinding="{Binding Comentario}" Width="100"/>
+                    <GridViewColumn Header="Producto" DisplayMemberBinding="{Binding NombreProducto}" Width="200"/>
+                    <GridViewColumn Header="Precio Unitario" DisplayMemberBinding="{Binding PrecioUnitario}" Width="100"/>
+                    <GridViewColumn Header="Cantidad" DisplayMemberBinding="{Binding Cantidad}" Width="100"/>
+                    <GridViewColumn Header="Subtotal" DisplayMemberBinding="{Binding SubtotalProductos}" Width="100"/>
                     <GridViewColumn Header="Acciones" Width="200">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -40,7 +40,7 @@
             </ListView.View>
         </ListView>
         
-        <Button Content="Agregar" HorizontalAlignment="Left" Margin="1055,276,0,0" VerticalAlignment="Top" Click="Agregar"/>
+        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="1055,276,0,0" VerticalAlignment="Top" Click="Agregar"/>
         <!--<Label Content="Imagen" HorizontalAlignment="Left" Margin="480,278,0,0" VerticalAlignment="Top"/>
         <Button Content="Buscar" HorizontalAlignment="Left" Margin="741,284,0,0" VerticalAlignment="Top" Click="BuscarImagen"/>
         <Image x:Name="imgProducto" HorizontalAlignment="Left" Height="300" Margin="480,309,0,0" VerticalAlignment="Top" Width="300"/>-->

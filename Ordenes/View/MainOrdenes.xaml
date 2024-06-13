@@ -23,7 +23,7 @@
         <ListView x:Name="lvProductos" Margin="178,162,178,110">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
-                    <GridViewColumn Header="Cliente" DisplayMemberBinding="{Binding Nombre}" Width="200"/>
+                    <GridViewColumn Header="Cliente" DisplayMemberBinding="{Binding NombreCliente}" Width="200"/>
                     <GridViewColumn Header="PrecioTotal" DisplayMemberBinding="{Binding PrecioTotal}" Width="100"/>
                     <GridViewColumn Header="Pagado" DisplayMemberBinding="{Binding Pagado}" Width="100"/>
                     <GridViewColumn Header="Comentario" DisplayMemberBinding="{Binding Comentario}" Width="300"/>
