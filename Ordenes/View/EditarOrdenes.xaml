@@ -1,0 +1,51 @@
+﻿<Page x:Class="KomalliClienteEscritorio.Ordenes.View.EditarOrdenes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KomalliClienteEscritorio.Ordenes.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="EditarOrdenes">
+
+    <Grid Background="White">
+        <Button Content="Atrás" HorizontalAlignment="Left" Margin="68,36,0,0" VerticalAlignment="Top" Click="Atras"/>
+
+        <Label Content="Nombre de Cliente" HorizontalAlignment="Left" Margin="515,70,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbNombreCliente" HorizontalAlignment="Left" Margin="540,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <Label Content="Precio Total" HorizontalAlignment="Left" Margin="515,122,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbPrecioTotal" HorizontalAlignment="Left" Margin="540,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <Label Content="Pagado?" HorizontalAlignment="Left" Margin="515,179,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbPagado" HorizontalAlignment="Left" Margin="540,201,0,0" VerticalAlignment="Top" Width="170"/>
+        <Label Content="Comentario" HorizontalAlignment="Left" Margin="515,228,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tvComentario" HorizontalAlignment="Left" Margin="540,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+
+        <ListView x:Name="lvProductos" Margin="178,310,178,134">
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn Header="Producto" DisplayMemberBinding="{Binding Nombre}" Width="200"/>
+                    <GridViewColumn Header="Precio Unitario" DisplayMemberBinding="{Binding PrecioTotal}" Width="100"/>
+                    <GridViewColumn Header="Cantidad" DisplayMemberBinding="{Binding Pagado}" Width="100"/>
+                    <GridViewColumn Header="Subtotal" DisplayMemberBinding="{Binding Comentario}" Width="100"/>
+                    <GridViewColumn Header="Acciones" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button Content="Eliminar" Click="Eliminar" Tag="{Binding}" Margin="10,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        <Button Content="Agregar" HorizontalAlignment="Left" Margin="1055,276,0,0" VerticalAlignment="Top" Click="Agregar"/>
+        <!--<Label Content="Imagen" HorizontalAlignment="Left" Margin="480,278,0,0" VerticalAlignment="Top"/>
+        <Button Content="Buscar" HorizontalAlignment="Left" Margin="741,284,0,0" VerticalAlignment="Top" Click="BuscarImagen"/>
+        <Image x:Name="imgProducto" HorizontalAlignment="Left" Height="300" Margin="480,309,0,0" VerticalAlignment="Top" Width="300"/>-->
+
+        <!--<Button Content="Guardar" HorizontalAlignment="Left" Margin="718,631,0,0" VerticalAlignment="Top" Click="Guardar"/>-->
+        <Button Content="Guardar" HorizontalAlignment="Left" Margin="718,631,0,0" VerticalAlignment="Top" Click="Guardar"/>
+    </Grid>
+</Page>

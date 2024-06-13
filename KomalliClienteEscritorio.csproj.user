@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="AdminHome\View\AdminHome.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Categorias\View\EditarCategoria.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Categorias\View\MainCategorias.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Login\View\LoginPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Ordenes\View\AgregarProducto.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Ordenes\View\EditarOrdenes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Ordenes\View\MainOrdenes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Productos\View\EditarProducto.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Productos\View\MainProductos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="AdminHome\View\AdminHome.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Categorias\View\EditarCategoria.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Categorias\View\MainCategorias.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Login\View\LoginPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Ordenes\View\AgregarProducto.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Ordenes\View\EditarOrdenes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Ordenes\View\MainOrdenes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Productos\View\EditarProducto.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Productos\View\MainProductos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

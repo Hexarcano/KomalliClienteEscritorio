@@ -1,0 +1,20 @@
+﻿<Page x:Class="KomalliClienteEscritorio.Categorias.View.EditarCategoria"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KomalliClienteEscritorio.Categorias.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="EditarCategoria">
+
+    <Grid Background="White">
+        <Button Content="Atrás" HorizontalAlignment="Left" Margin="68,36,0,0" VerticalAlignment="Top" Click="Atras"/>
+        <Label Content="Nombre de Categoria" HorizontalAlignment="Left" Margin="465,70,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbNombre" HorizontalAlignment="Left" Margin="595,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <Label Content="Imagen" HorizontalAlignment="Left" Margin="465,134,0,0" VerticalAlignment="Top"/>
+        <Image x:Name="imgCategoria" HorizontalAlignment="Left" Height="300" Margin="465,165,0,0" VerticalAlignment="Top" Width="300"/>
+        <Button Content="Buscar" HorizontalAlignment="Left" Margin="726,140,0,0" VerticalAlignment="Top" Click="BuscarImagen"/>
+        <Button Content="Guardar" HorizontalAlignment="Left" Margin="718,540,0,0" VerticalAlignment="Top" Click="Guardar"/>
+    </Grid>
+</Page>
